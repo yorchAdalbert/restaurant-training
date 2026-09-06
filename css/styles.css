@@ -9,6 +9,38 @@ body {
   color: #202020;
 }
 
+.dish-training {
+  margin: 50px 0;
+  background: white;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.dish-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.dish-info {
+  padding: 50px;
+}
+
+.dish-info h2 {
+  margin: 10px 0 20px;
+  font-size: 42px;
+}
+
+.dish-description {
+  max-width: 500px;
+  line-height: 1.7;
+  color: #666;
+}
+
+.training-section {
+  padding: 35px 50px;
+  border-top: 1px solid #eeeeee;
+}
+
 .container {
   width: min(1100px, calc(100% - 40px));
   margin: 0 auto;
@@ -84,6 +116,14 @@ body {
 }
 
 @media (max-width: 800px) {
+  .dish-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .dish-info .training-section {
+    padding: 30px;
+  }
+
   .dish-grid {
     grid-template-columns: 1fr;
   }
