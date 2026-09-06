@@ -1,37 +1,74 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Restaurant Training</title>
+    <title>Restaurant Training</title>
 
-  <link rel="stylesheet" href="css/styles.css" />
-</head>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
 
-<body>
-  <header class="site-header">
-    <div class="container">
-      <h1>Restaurant Training</h1>
-    </div>
-  </header>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <h1>Restaurant Training</h1>
+      </div>
+    </header>
 
-  <main class="container">
-    <section class="welcome">
-      <p class="eyebrow">STAFF TRAINING</p>
+    <main class="container">
+      <article class="dish-training">
+        <section class="dish-hero">
+          <div class="dish-image">
+            <img
+              src="images/dishes/tuna-spicy-toast.png"
+              alt="Tuna Spicy Toast"
+            />
+          </div>
 
-      <h2>Interactive Menu Training</h2>
+          <div class="dish-info">
+            <p class="eyebrow">APPETIZER</p>
 
-      <p>
-        Learn each dish, its ingredients, preparation, allergens,
-        and key selling points.
-      </p>
+            <h2>TUNA SPICY TOAST</h2>
 
-      <div id="dish-list" class="dish-grid"></div>
-    </section>
-  </main>
+            <p class="dish-description">
+              Crispy toast topped with fresh tuna, chipotle mayo, avocado and house ingredients.
+            </p>
+          </div>
+        </section>
 
-  <script src="js/menu-data.js"></script>
-  <script src="js/app.js"></script>
-</body>
+        <section class="trainig-section">
+            <h3>Ingridents</h3>
+
+            <div id="ingredients-list" class="ingredients-grid"></div>
+        </section>
+
+        <section class="trainig-section">
+            <h3>Allergens</h3>
+            <div id="allergens-list"></div>
+        </section>
+
+        <section class="trainig-section">
+            <h3>Preparation</h3>
+
+            <p>
+                Preparation instructions will appear here.
+            </p>
+        </section>
+
+        <section class="trainig-section">
+            <h3>Selling Points</h3>
+
+            <ul>
+                <li>Fresh tuna</li>
+                <li>Balanced spicy flavor</li>
+                <li>Crunchy texture</li>
+            </ul>
+        </section>
+      </article>
+    </main>
+
+    <script src="js/menu-data.js"></script>
+    <script src="js/app.js"></script>
+  </body>
 </html>
