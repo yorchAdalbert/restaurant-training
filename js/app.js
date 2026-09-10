@@ -1,18 +1,7 @@
-const dishList = document.querySelector("#dish-list");
+const dish = menu[0];
 
-menu.forEach((dish) => {
-  const card = document.createElement("button");
+const ingredientList = document.querySelector("#ingredient-list");
 
-  card.className = "dish-card";
-
-  card.innerHTML = `
-    <h3>${dish.name}</h3>
-    <p>${dish.category}</p>
-  `;
-
-  card.addEventListener("click", () => {
-    console.log(`Opening training for: ${dish.name}`);
-  });
-
-  dishList.appendChild(card);
+dish.ingredients.forEach((ingredient) => {
+  console.log(ingredient.name);
 });
