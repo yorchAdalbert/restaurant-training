@@ -48,5 +48,22 @@ const menu = [
         description: "Fresh cilantro used as an aromatic herb.",
       },
     ],
+
+    allergens: ["Fish", "Egg", "Gluten"],
+
+    preparation: [
+      "Toast the slice of sourdough batard bread.",
+      "Prepare the fresh tuna mixture.",
+      "Spread chipotle mayo over the toasted bread.",
+      "Add the tuna mixture on top.",
+      "Finish with diced avocado, Persian cucumber, green onion, cilantro and sriracha sauce.",
+    ],
+
+    sellingPoints: [
+      "Made with fresh tuna.",
+      "Balanced combination of creamy, spicy and fresh flavors.",
+      "Crunchy sourdough toast adds texture.",
+      "Fresh avocado and cucumber help balance the heat.",
+    ],
   },
 ];
