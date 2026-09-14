@@ -65,5 +65,29 @@ const menu = [
       "Crunchy sourdough toast adds texture.",
       "Fresh avocado and cucumber help balance the heat.",
     ],
+
+    quiz: [
+      {
+        question:
+          "Which ingredient gives the Tuna Spicy Toast its smoky flavor?",
+        options: ["Sriracha Sauce", "Chipotle Mayo", "Cilantro", "Avocado"],
+        correctAnswer: "Chipotle Mayo",
+      },
+      {
+        question: "Which ingredient adds freshness and crunch?",
+        options: [
+          "Persian Cucumber",
+          "Fresh Tuna",
+          "Chipotle Mayo",
+          "Sourdough Batard Bread",
+        ],
+        correctAnswer: "Persian Cucumber",
+      },
+      {
+        question: "What is the main protein in the dish?",
+        options: ["Avocado", "Fresh Tuna", "Cilantro", "Green Onion"],
+        correctAnswer: "Fresh Tuna",
+      },
+    ],
   },
 ];

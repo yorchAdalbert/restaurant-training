@@ -224,6 +224,62 @@ body {
   color: #555;
 }
 
+/* Quiz Section */
+
+.quiz-container {
+  margin-top: 20px;
+}
+
+.quiz-container h4 {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.quiz-option {
+  display: block;
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 14px 18px;
+
+  border: 1px solid #dddddd;
+  border-radius: 12px;
+
+  background: white;
+
+  font: inherit;
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.quiz-option:hover {
+  background: #f7f7f7;
+}
+
+.quiz-feedback {
+  margin-top: 16px;
+  min-height: 24px;
+  font-weight: 600;
+}
+
+.quiz-feedback.correct {
+  color: #2e7d32;
+}
+
+.quiz-feedback.incorrect {
+  color: #c62828;
+}
+
+.quiz-option.correct {
+  border-color: #2e7d32;
+  background: #e8f5e9;
+}
+
+.quiz-option.incorrect {
+  border-color: #c62828;
+  background: #ffebee;
+}
+
 @media (max-width: 800px) {
   .dish-hero {
     grid-template-columns: 1fr;
