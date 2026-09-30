@@ -6,54 +6,6 @@ const allergensList = document.querySelector("#allergens-list");
 const preparationList = document.querySelector("#preparation-list");
 const sellingPointsList = document.querySelector("#selling-points-list");
 
-dish.ingredients.forEach((ingredient) => {
-  const card = document.createElement("button");
-
-  card.className = "ingredient-card";
-
-  card.innerHTML = `
-    <img src="${ingredient.icon}" alt="${ingredient.name}" />
-    <p>${ingredient.name}</p>
-  `;
-
-  card.addEventListener("click", () => {
-    ingredientDetails.innerHTML = `
-      <h4>${ingredient.name}</h4>
-      <p>${ingredient.description}</p>
-    `;
-  });
-
-  ingredientList.appendChild(card);
-});
-
-dish.allergens.forEach((allergen) => {
-  const badge = document.createElement("span");
-
-  badge.className = "allergen-badge";
-  badge.textContent = allergen;
-
-  allergensList.appendChild(badge);
-});
-
-dish.preparation.forEach((step) => {
-  const item = document.createElement("li");
-
-  item.textContent = step;
-
-  preparationList.append(item);
-});
-
-dish.sellingPoints.forEach((point) => {
-  const item = document.createElement("li");
-
-  item.textContent = point;
-
-  sellingPointsList.appendChild(item);
-});
-
-// Quiz Section
-//const quizQuestion = dish.quiz[0];
-
 const quizContainer = document.querySelector("#quiz-container");
 const quizFeedback = document.querySelector("#quiz-feedback");
 const nextQuestionButton = document.querySelector("#next-question");
@@ -62,9 +14,76 @@ let answeredCorrectly = false;
 let currentQuestionIndex = 0;
 let score = 0;
 
-/*const questionTitle = document.createElement("h4");
-questionTitle.textContent = quizQuestion.question;
-quizContainer.appendChild(questionTitle);*/
+renderIngredients();
+renderAllergens();
+renderPreparation();
+renderSellingPoints();
+showQuestion();
+
+nextQuestionButton.addEventListener("click", () => {
+  currentQuestionIndex++;
+
+  if (currentQuestionIndex < dish.quiz.length) {
+    showQuestion();
+  } else {
+    showResults();
+  }
+});
+
+// Functions
+
+function renderIngredients() {
+  dish.ingredients.forEach((ingredient) => {
+    const card = document.createElement("button");
+
+    card.className = "ingredient-card";
+
+    card.innerHTML = `
+    <img src="${ingredient.icon}" alt="${ingredient.name}" />
+    <p>${ingredient.name}</p>
+  `;
+
+    card.addEventListener("click", () => {
+      ingredientDetails.innerHTML = `
+      <h4>${ingredient.name}</h4>
+      <p>${ingredient.description}</p>
+    `;
+    });
+
+    ingredientList.appendChild(card);
+  });
+}
+
+function renderAllergens() {
+  dish.allergens.forEach((allergen) => {
+    const badge = document.createElement("span");
+
+    badge.className = "allergen-badge";
+    badge.textContent = allergen;
+
+    allergensList.appendChild(badge);
+  });
+}
+
+function renderPreparation() {
+  dish.preparation.forEach((step) => {
+    const item = document.createElement("li");
+
+    item.textContent = step;
+
+    preparationList.append(item);
+  });
+}
+
+function renderSellingPoints() {
+  dish.sellingPoints.forEach((point) => {
+    const item = document.createElement("li");
+
+    item.textContent = point;
+
+    sellingPointsList.appendChild(item);
+  });
+}
 
 function showQuestion() {
   const quizQuestion = dish.quiz[currentQuestionIndex];
@@ -79,7 +98,7 @@ function showQuestion() {
   questionTitle.textContent = quizQuestion.question;
   quizContainer.appendChild(questionTitle);
 
-  let answeredCorrectly = false;
+  let answered = false;
 
   quizQuestion.options.forEach((option) => {
     const button = document.createElement("button");
@@ -88,18 +107,19 @@ function showQuestion() {
     button.textContent = option;
 
     button.addEventListener("click", () => {
-      if (answeredCorrectly) {
+      if (answered) {
         return;
       }
 
-      const buttons = document.querySelectorAll(".quiz-option");
+      answered = true;
+
+      const buttons = quizContainer.querySelectorAll(".quiz-option");
 
       buttons.forEach((quizButton) => {
-        quizButton.classList.remove("incorrect");
+        quizButton.disabled = true;
       });
 
       if (option === quizQuestion.correctAnswer) {
-        answeredCorrectly = true;
         score++;
 
         button.classList.add("correct");
@@ -111,69 +131,53 @@ function showQuestion() {
       } else {
         button.classList.add("incorrect");
 
-        quizFeedback.textContent = "Incorrect. Try again.";
+        buttons.forEach((quizButton) => {
+          if (quizButton.textContent === quizQuestion.correctAnswer) {
+            quizButton.classList.add("correct");
+          }
+        });
+
+        quizFeedback.textContent = `Incorrect. The correct answer is ${quizQuestion.correctAnswer}`;
         quizFeedback.className = "quiz-feedback incorrect";
       }
     });
 
     quizContainer.appendChild(button);
+    nextQuestionButton.hidden = false;
   });
 }
 
 function showResults() {
+  const percentage = Math.round((score / dish.quiz.length) * 100);
+
+  const passingScore = 80;
+
+  const passed = percentage >= passingScore;
+
+  const resultMessage = passed
+    ? "Assessment passed!"
+    : "Assessment not passed. Review the dish and try again.";
+
+  //quizProgress.textContent = "Quiz complete";
+
   quizContainer.innerHTML = `
-    <h4>Quiz Complete</h4>
+    <h4>Your Results</h4>
+
     <p>
       You scored ${score} out of ${dish.quiz.length}.
+    </p>
+
+    <p class="quiz-percentage">
+      ${percentage}%
+    </p>
+
+    <p class="quiz-result-message">
+      ${resultMessage}
     </p>
   `;
 
   quizFeedback.textContent = "";
+
   nextQuestionButton.hidden = true;
+  //restartQuizButton.hidden = false;
 }
-
-nextQuestionButton.addEventListener("click", () => {
-  currentQuestionIndex++;
-
-  if (currentQuestionIndex < dish.quiz.length) {
-    showQuestion();
-  } else {
-    showResults();
-  }
-});
-
-showQuestion();
-
-/*quizQuestion.options.forEach((option) => {
-  const button = document.createElement("button");
-
-  button.className = "quiz-option";
-  button.textContent = option;
-
-  button.addEventListener("click", () => {
-    if (answeredCorrectly) {
-      return;
-    }
-
-    const buttons = document.querySelectorAll(".quiz-option");
-
-    buttons.forEach((quizButton) => {
-      quizButton.classList.remove("incorrect");
-    });
-
-    if (option === quizQuestion.correctAnswer) {
-      answeredCorrectly = true;
-      button.classList.add("correct");
-
-      quizFeedback.textContent = "Correct! Great job.";
-      quizFeedback.className = "quiz-feedback correct";
-    } else {
-      button.classList.add("incorrect");
-
-      quizFeedback.textContent = "Incorrect. Try again.";
-      quizFeedback.className = "quiz-feedback incorrect";
-    }
-  });
-
-  quizContainer.appendChild(button);
-});*/

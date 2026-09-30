@@ -280,6 +280,20 @@ body {
   background: #ffebee;
 }
 
+.quiz-option:disabled {
+  cursor: default;
+}
+
+.quiz-percentage {
+  margin: 12px 0;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.quiz-result-message {
+  font-weight: 600;
+}
+
 @media (max-width: 800px) {
   .dish-hero {
     grid-template-columns: 1fr;
