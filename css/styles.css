@@ -9,6 +9,24 @@ body {
   color: #202020;
 }
 
+/* NAVIGATION SECTION */
+.dish-navigation {
+  margin-top: 30px;
+}
+
+.back-link {
+  display: inline-block;
+  color: #555;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* DISH SECTION */
+
 .dish-training {
   margin: 50px 0;
   background: white;
@@ -295,6 +313,14 @@ body {
 }
 
 /* MENU PAGE */
+
+.menu-category {
+  margin-bottom: 50px;
+}
+
+.menu-category > h2 {
+  margin-bottom: 20px;
+}
 
 .menu-training {
   margin: 50px 0;

@@ -1,4 +1,4 @@
-const menuGrid = document.querySelector("#menu-grid");
+const menuCategories = document.querySelector("#menu-categories");
 
 menu.forEach((dish) => {
   const card = document.createElement("a");
@@ -24,5 +24,32 @@ menu.forEach((dish) => {
   </div>  
   `;
 
-  menuGrid.appendChild(card);
+  //menuGrid.appendChild(card);
+});
+
+const categories =
+  menu.map((dish) => {
+    return dish.category;
+  });
+
+  const uniqueCategories = [...new Set(categories)];
+
+uniqueCategories.forEach((category) => {
+  const dishesInCategory = menu.filter((dish) => {
+    return dish.category === category;
+  });
+
+  const categorySection = document.createElement("section");
+  const categoryTitle = document.createElement("h2");
+  const categoryGrid = document.createElement("div");
+
+  categorySection.className = "menu-category";
+  categoryGrid.className = "menu-grid";
+
+  categoryTitle.textContent = category;
+
+  categorySection.appendChild(categoryTitle);
+  categorySection.appendChild(categoryGrid);
+
+  menuCategories.appendChild(categorySection);
 });
