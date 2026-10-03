@@ -1,4 +1,16 @@
-const dish = menu[0];
+const params = new URLSearchParams(window.location.search);
+
+const dishId = params.get("dish") || "tuna-spicy-toast";
+
+const dish = menu.find((item) => {
+  return item.id === dishId;
+})
+
+const dishImage = document.querySelector("#dish-image");
+
+const dishCategory = document.querySelector("#dish-category");
+const dishName = document.querySelector("#dish-name");
+const dishDescription = document.querySelector("#dish-description");
 
 const ingredientList = document.querySelector("#ingredients-list");
 const ingredientDetails = document.querySelector("#ingredient-details");
@@ -14,6 +26,7 @@ let answeredCorrectly = false;
 let currentQuestionIndex = 0;
 let score = 0;
 
+renderDishInfo();
 renderIngredients();
 renderAllergens();
 renderPreparation();
@@ -31,6 +44,15 @@ nextQuestionButton.addEventListener("click", () => {
 });
 
 // Functions
+
+function renderDishInfo() {
+  dishCategory.textContent = dish.category;
+  dishName.textContent = dish.name;
+  dishDescription.textContent = dish.description;
+
+  dishImage.src = dish.image;
+  dishImage.alt = dish.name;
+}
 
 function renderIngredients() {
   dish.ingredients.forEach((ingredient) => {
