@@ -4,7 +4,11 @@ const dishId = params.get("dish") || "tuna-spicy-toast";
 
 const dish = menu.find((item) => {
   return item.id === dishId;
-})
+});
+
+const dishError = document.querySelector("#dish-error");
+
+const dishTraining = document.querySelector("#dish-training");
 
 const dishImage = document.querySelector("#dish-image");
 
@@ -26,12 +30,29 @@ let answeredCorrectly = false;
 let currentQuestionIndex = 0;
 let score = 0;
 
-renderDishInfo();
-renderIngredients();
-renderAllergens();
-renderPreparation();
-renderSellingPoints();
-showQuestion();
+if (!dish) {
+  dishTraining.hidden = true;
+  dishError.hidden = false;
+
+  dishError.innerHTML = `
+    <h2>Dish not found</h2>
+    <p>
+      The requested training module does not exist.
+    </p>
+    <a href="index.html">
+      Return to Menu Training
+    </a>
+  `;
+}
+
+if (dish) {
+  renderDishInfo();
+  renderIngredients();
+  renderAllergens();
+  renderPreparation();
+  renderSellingPoints();
+  showQuestion();
+}
 
 nextQuestionButton.addEventListener("click", () => {
   currentQuestionIndex++;

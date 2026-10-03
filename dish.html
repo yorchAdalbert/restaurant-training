@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Restaurant Training</title>
+
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body>
+    <main class="container">
+      <div id="dish-error" class="dish-error" hidden></div>
+      <article id="dish-training" class="dish-training">
+        <section class="dish-hero">
+          <div class="dish-image">
+            <img id="dish-image" src="" alt="" />
+          </div>
+
+          <div class="dish-info">
+            <p id="dish-category" class="eyebrow"></p>
+
+            <h2 id="dish-name"></h2>
+
+            <p id="dish-description" class="dish-description"></p>
+          </div>
+        </section>
+
+        <section class="training-section">
+          <h3>Ingridents</h3>
+
+          <div id="ingredients-list" class="ingredients-grid"></div>
+
+          <div id="ingredient-details" class="ingredient-details">
+            <p>Select an ingredient to learn more about it.</p>
+          </div>
+        </section>
+
+        <section class="training-section">
+          <h3>Allergens</h3>
+          <div id="allergens-list" class="allergens-list"></div>
+        </section>
+
+        <section class="training-section">
+          <h3>Preparation</h3>
+
+          <ol id="preparation-list" class="preparation-list"></ol>
+        </section>
+
+        <section class="training-section">
+          <h3>Selling Points</h3>
+
+          <ul id="selling-points-list" class="selling-points-list"></ul>
+        </section>
+
+        <section class="training-section">
+          <h3>Knowledge Check</h3>
+
+          <div id="quiz-container" class="quiz-container"></div>
+
+          <p id="quiz-feedback" class="quiz-feedback"></p>
+
+          <button id="next-question" class="next-question" hidden>
+            Next Question
+          </button>
+        </section>
+      </article>
+    </main>
+
+    <script src="js/menu-data.js"></script>
+    <script src="js/dish.js"></script>
+  </body>
+</html>
