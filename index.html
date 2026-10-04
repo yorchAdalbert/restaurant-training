@@ -1,38 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
+  <head>
+    <meta charset="UTF-8" />
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Restaurant Training</title>
+    <title>Restaurant Training</title>
 
-  <link rel="stylesheet" href="css/styles.css" />
-</head>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
 
-<body>
-  <main class="container">
-    <section class="menu-training">
-      <div class="menu-header">
-        <p class="eyebrow">TRAINING</p>
-        <h1>Menu Training</h1>
+  <body>
+    <main class="container">
+      <section class="menu-training">
+        <div class="menu-header">
+          <p class="eyebrow">TRAINING</p>
+          <h1>Menu Training</h1>
 
-        <p>
-          Select a dish to begin your training.
-        </p>
-      </div>
+          <p>Select a dish to begin your training.</p>
+        </div>
 
-      <div
-        id="menu-categories"
-        class="menu-categories"
-      ></div>
-    </section>
-  </main>
+        <nav id="category-navigation" class="category-navigation"></nav>
 
-  <script src="js/menu-data.js"></script>
-  <script src="js/menu.js"></script>
-</body>
+        <div id="menu-categories" class="menu-categories"></div>
+      </section>
+    </main>
+
+    <script src="js/menu-data.js"></script>
+    <script src="js/menu.js"></script>
+  </body>
 </html>

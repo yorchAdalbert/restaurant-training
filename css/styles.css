@@ -9,6 +9,10 @@ body {
   color: #202020;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* NAVIGATION SECTION */
 .dish-navigation {
   margin-top: 30px;
@@ -23,6 +27,30 @@ body {
 
 .back-link:hover {
   text-decoration: underline;
+}
+
+/* NAVIGATION BAR */
+
+.category-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.category-link {
+  display: inline-block;
+  padding: 10px 16px;
+  border: 1px solid #dddddd;
+  border-radius: 999px;
+  background: white;
+  color: #333;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.category-link:hover {
+  background: #f5f5f5;
 }
 
 /* DISH SECTION */
