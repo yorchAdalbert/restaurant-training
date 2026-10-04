@@ -1,6 +1,6 @@
 const menuCategories = document.querySelector("#menu-categories");
 
-menu.forEach((dish) => {
+/*menu.forEach((dish) => {
   const card = document.createElement("a");
 
   card.className = "menu-card";
@@ -25,14 +25,13 @@ menu.forEach((dish) => {
   `;
 
   //menuGrid.appendChild(card);
+}); */
+
+const categories = menu.map((dish) => {
+  return dish.category;
 });
 
-const categories =
-  menu.map((dish) => {
-    return dish.category;
-  });
-
-  const uniqueCategories = [...new Set(categories)];
+const uniqueCategories = [...new Set(categories)];
 
 uniqueCategories.forEach((category) => {
   const dishesInCategory = menu.filter((dish) => {
@@ -47,6 +46,34 @@ uniqueCategories.forEach((category) => {
   categoryGrid.className = "menu-grid";
 
   categoryTitle.textContent = category;
+
+  dishesInCategory.forEach((dish) => {
+    const card = document.createElement("a");
+
+    card.className = "menu-card";
+
+    card.href = `dish.html?dish=${dish.id}`;
+
+    card.innerHTML = `
+    <img
+      src="${dish.image}"
+      alt="${dish.name}"
+    />
+
+    <div class="menu-card-info">
+      <p class="eyebrow">
+        ${dish.category}
+      </p>
+
+      <h2>${dish.name}</h2>
+
+      <p>${dish.description}</p>
+    </div>
+  `;
+
+    categoryGrid.appendChild(card);
+  });
+
 
   categorySection.appendChild(categoryTitle);
   categorySection.appendChild(categoryGrid);
