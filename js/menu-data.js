@@ -2,7 +2,8 @@ const menu = [
   {
     id: "tuna-spicy-toast",
     name: "Tuna Spicy Toast",
-    category: "Appetizer",
+    menu: "Brunch",
+    category: "Toasts",
     image: "images/dishes/tuna-spicy-toast.webp",
     description:
       "Crispy toast topped with fresh tuna, chipotle mayo, avocado and house ingredients.",
@@ -95,7 +96,8 @@ const menu = [
   {
     id: "french-toast",
     name: "French Toast",
-    category: "Breakfast",
+    menu: "Brunch",
+    category: "Toasts",
     image: "images/dishes/french-toast.webp",
     description:
       "A temporary training module used to test multiple dishes.",

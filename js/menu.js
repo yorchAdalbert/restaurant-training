@@ -1,32 +1,25 @@
 const menuCategories = document.querySelector("#menu-categories");
 const categoryNavigation = document.querySelector("#category-navigation");
 
-/*menu.forEach((dish) => {
-  const card = document.createElement("a");
+const menus = menu.map((dish) => {
+  return dish.menu;
+});
 
-  card.className = "menu-card";
+console.log(menus);
 
-  card.href = `dish.html?dish=${dish.id}`;
+const uniqueMenus = [...new Set(menus)];
 
-  card.innerHTML = `
-  <img
-    src="${dish.image}"
-    alt="${dish.name}"
-  />
+console.log(uniqueMenus);
 
-  <div class="menu-card-info">
-    <p class="eyebrow">
-      ${dish.category}
-    </p>
-    
-    <h2>${dish.name}</h2>
+uniqueMenus.forEach((menuName) => {
+  const dishesInMenu = menu.filter((dish) => { return dish.menu === menuName })
 
-    <p>${dish.description}</p>
-  </div>  
-  `;
+  const categoriesInMenu = dishesInMenu.map((dish) => { return dish.category });
+  const uniqueCategoriesInMenu = [...new Set(categoriesInMenu)];
 
-  //menuGrid.appendChild(card);
-}); */
+  console.log(uniqueCategoriesInMenu);
+  console.log(dishesInMenu);
+});
 
 const categories = menu.map((dish) => {
   return dish.category;
@@ -39,7 +32,7 @@ uniqueCategories.forEach((category) => {
 
   link.className = "category-link";
   link.textContent = category;
-  link.href = `#${category.toLowerCase()}`;
+  link.href = `#${createSlug(category)}`;
 
   categoryNavigation.appendChild(link);
 });
@@ -54,19 +47,32 @@ uniqueCategories.forEach((category) => {
   const categoryGrid = document.createElement("div");
 
   categorySection.className = "menu-category";
-  categorySection.id = category.toLowerCase();
+  categorySection.id = createSlug(category);
   categoryGrid.className = "menu-grid";
 
   categoryTitle.textContent = category;
 
   dishesInCategory.forEach((dish) => {
-    const card = document.createElement("a");
+    const card = createDishCard(dish);
 
-    card.className = "menu-card";
+    categoryGrid.appendChild(card);
+  });
 
-    card.href = `dish.html?dish=${dish.id}`;
+  categorySection.appendChild(categoryTitle);
+  categorySection.appendChild(categoryGrid);
 
-    card.innerHTML = `
+  menuCategories.appendChild(categorySection);
+});
+
+// CUSTOM FUNCTIONS
+
+function createDishCard(dish) {
+  const card = document.createElement("a");
+
+  card.className = "menu-card";
+  card.href = `dish.html?dish=${dish.id}`;
+
+  card.innerHTML = `
     <img
       src="${dish.image}"
       alt="${dish.name}"
@@ -83,11 +89,9 @@ uniqueCategories.forEach((category) => {
     </div>
   `;
 
-    categoryGrid.appendChild(card);
-  });
+  return card;
+}
 
-  categorySection.appendChild(categoryTitle);
-  categorySection.appendChild(categoryGrid);
-
-  menuCategories.appendChild(categorySection);
-});
+function createSlug(text) {
+  return text.toLowerCase().replaceAll(" & ", "-").replaceAll(" ", "-");
+}
