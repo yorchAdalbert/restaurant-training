@@ -5,20 +5,51 @@ const menus = menu.map((dish) => {
   return dish.menu;
 });
 
-console.log(menus);
-
 const uniqueMenus = [...new Set(menus)];
 
-console.log(uniqueMenus);
-
 uniqueMenus.forEach((menuName) => {
-  const dishesInMenu = menu.filter((dish) => { return dish.menu === menuName })
+  const dishesInMenu = menu.filter((dish) => { return dish.menu === menuName });
 
   const categoriesInMenu = dishesInMenu.map((dish) => { return dish.category });
   const uniqueCategoriesInMenu = [...new Set(categoriesInMenu)];
 
-  console.log(uniqueCategoriesInMenu);
-  console.log(dishesInMenu);
+  const menuSection = document.createElement("section");
+  menuSection.className = "menu-section";
+
+  const menuTitle = document.createElement("h2");
+  menuTitle.textContent = menuName;
+  console.log(menuName);
+
+  menuSection.appendChild(menuTitle);
+
+  uniqueCategoriesInMenu.forEach((category) => {
+    const categorySection = document.createElement("section");
+    categorySection.className = "menu-category";
+
+    const categoryTitle = document.createElement("h3");
+    categoryTitle.textContent = category;
+
+    const dishesInCategory = dishesInMenu.filter((dish) => { return dish.category === category });
+
+    const categoryGrid = document.createElement("div");
+    categoryGrid.className = "menu-grid";
+
+    dishesInCategory.forEach((dish) => {
+      const dishCard = createDishCard(dish);
+      
+      categoryGrid.appendChild(dishCard);
+    });
+
+    categorySection.appendChild(categoryTitle);
+    categorySection.appendChild(categoryGrid);
+
+    menuSection.appendChild(categorySection);
+  })
+
+  menuCategories.appendChild(menuSection);
+
+  //console.log(menuName);
+  //console.log(dishesInMenu);
 });
 
 const categories = menu.map((dish) => {
@@ -52,13 +83,13 @@ uniqueCategories.forEach((category) => {
 
   categoryTitle.textContent = category;
 
-  dishesInCategory.forEach((dish) => {
+  /*dishesInCategory.forEach((dish) => {
     const card = createDishCard(dish);
 
     categoryGrid.appendChild(card);
-  });
+  });*/
 
-  categorySection.appendChild(categoryTitle);
+ // categorySection.appendChild(categoryTitle);
   categorySection.appendChild(categoryGrid);
 
   menuCategories.appendChild(categorySection);
