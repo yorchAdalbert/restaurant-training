@@ -96,8 +96,8 @@ const menu = [
   {
     id: "french-toast",
     name: "French Toast",
-    menu: "Brunch",
-    category: "Toasts",
+    menu: "Lunch & dinner",
+    category: "Desserts",
     image: "images/dishes/french-toast.webp",
     description:
       "A temporary training module used to test multiple dishes.",

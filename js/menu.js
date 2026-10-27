@@ -8,6 +8,12 @@ const menus = menu.map((dish) => {
 const uniqueMenus = [...new Set(menus)];
 
 uniqueMenus.forEach((menuName) => {
+  const link = document.createElement("a");
+
+  link.className = "category-link";
+  link.textContent = menuName;
+  link.href = `#${createSlug(menuName)}`;
+
   const dishesInMenu = menu.filter((dish) => { return dish.menu === menuName });
 
   const categoriesInMenu = dishesInMenu.map((dish) => { return dish.category });
@@ -15,19 +21,34 @@ uniqueMenus.forEach((menuName) => {
 
   const menuSection = document.createElement("section");
   menuSection.className = "menu-section";
+  menuSection.id = createSlug(menuName);
 
   const menuTitle = document.createElement("h2");
   menuTitle.textContent = menuName;
-  console.log(menuName);
 
   menuSection.appendChild(menuTitle);
+
+  const subcategoryNavigation = document.createElement("nav");
+  subcategoryNavigation.className = "subcategory-navigation";
+
+  menuSection.appendChild(subcategoryNavigation);
 
   uniqueCategoriesInMenu.forEach((category) => {
     const categorySection = document.createElement("section");
     categorySection.className = "menu-category";
 
-    const categoryTitle = document.createElement("h3");
-    categoryTitle.textContent = category;
+    const categoryId = `${createSlug(menuName)}-${createSlug(category)}`;
+    categorySection.id = categoryId;
+
+    const categoryLink = document.createElement("a");
+    categoryLink.className = "subcategory-link";
+    categoryLink.textContent = category;
+    categoryLink.href = `#${categoryId}`;
+
+    subcategoryNavigation.appendChild(categoryLink);
+
+    //const categoryTitle = document.createElement("h3");
+    //categoryTitle.textContent = category;
 
     const dishesInCategory = dishesInMenu.filter((dish) => { return dish.category === category });
 
@@ -40,59 +61,14 @@ uniqueMenus.forEach((menuName) => {
       categoryGrid.appendChild(dishCard);
     });
 
-    categorySection.appendChild(categoryTitle);
+    //categorySection.appendChild(categoryTitle);
     categorySection.appendChild(categoryGrid);
 
     menuSection.appendChild(categorySection);
   })
 
   menuCategories.appendChild(menuSection);
-
-  //console.log(menuName);
-  //console.log(dishesInMenu);
-});
-
-const categories = menu.map((dish) => {
-  return dish.category;
-});
-
-const uniqueCategories = [...new Set(categories)];
-
-uniqueCategories.forEach((category) => {
-  const link = document.createElement("a");
-
-  link.className = "category-link";
-  link.textContent = category;
-  link.href = `#${createSlug(category)}`;
-
   categoryNavigation.appendChild(link);
-});
-
-uniqueCategories.forEach((category) => {
-  const dishesInCategory = menu.filter((dish) => {
-    return dish.category === category;
-  });
-
-  const categorySection = document.createElement("section");
-  const categoryTitle = document.createElement("h2");
-  const categoryGrid = document.createElement("div");
-
-  categorySection.className = "menu-category";
-  categorySection.id = createSlug(category);
-  categoryGrid.className = "menu-grid";
-
-  categoryTitle.textContent = category;
-
-  /*dishesInCategory.forEach((dish) => {
-    const card = createDishCard(dish);
-
-    categoryGrid.appendChild(card);
-  });*/
-
- // categorySection.appendChild(categoryTitle);
-  categorySection.appendChild(categoryGrid);
-
-  menuCategories.appendChild(categorySection);
 });
 
 // CUSTOM FUNCTIONS
