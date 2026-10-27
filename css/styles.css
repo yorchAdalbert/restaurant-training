@@ -1,3 +1,17 @@
+:root {
+  --color-primary: #111111;
+  --color-accent: #c9a454;
+  --color-background: #f8f6f1;
+  --color-surface: #ffffff;
+  --color-text: #222222;
+
+  /* Nerium interior colors */
+  --color-blue-gray: #626b6c;
+  --color-terracotta: #a35f59;
+  --color-wood: #a77a52;
+  --color-red: #c81727;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -13,7 +27,34 @@ html {
   scroll-behavior: smooth;
 }
 
-/* NAVIGATION SECTION */
+/* ===== SITE HEADER ===== */
+
+.site-header {
+  background: var(--color-primary);
+  padding: 16px 24px;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+.brand-logo {
+  display: block;
+  width: 180px;
+  height: auto;
+}
+
+/* ==== NAVIGATION SECTION ==== */
 .dish-navigation {
   margin-top: 30px;
 }
