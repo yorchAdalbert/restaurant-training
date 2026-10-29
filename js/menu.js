@@ -69,6 +69,16 @@ uniqueMenus.forEach((menuName) => {
 
   menuCategories.appendChild(menuSection);
   categoryNavigation.appendChild(link);
+
+  link.addEventListener("click", () => {
+    const links = categoryNavigation.querySelectorAll(".category-link");
+
+    links.forEach((menuLink) => {
+      menuLink.classList.remove("active");
+    })
+
+    link.classList.add("active");
+  })
 });
 
 // CUSTOM FUNCTIONS
