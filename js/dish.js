@@ -98,14 +98,10 @@ function renderIngredients() {
 }
 
 function renderAllergens() {
+  allergensList.innerHTML = "";
+
   if (!dish.allergens || dish.allergens.length === 0) {
-    const warning = document.createElement("p");
-
-    warning.textContent =
-      "Allergen information pending verification. " +
-      "Consult the restaurant's official allergen guidance.";
-
-    allergensList.appendChild(warning);
+        showEmptyMessage(allergensList, "Allergen information pending verification.")
   } else {
     dish.allergens.forEach((allergen) => {
       const badge = document.createElement("span");
@@ -119,23 +115,35 @@ function renderAllergens() {
 }
 
 function renderPreparation() {
-  dish.preparation.forEach((step) => {
-    const item = document.createElement("li");
+  preparationList.innerHTML = "";
 
-    item.textContent = step;
+  if (!dish.preparation || dish.preparation.length === 0) {
+    showEmptyMessage(preparationList, "Preparation instructions are being documented.");
+  } else {
+    dish.preparation.forEach((step) => {
+      const item = document.createElement("li");
 
-    preparationList.append(item);
-  });
+      item.textContent = step;
+
+     preparationList.append(item);
+    });
+  }
 }
 
 function renderSellingPoints() {
-  dish.sellingPoints.forEach((point) => {
-    const item = document.createElement("li");
+  sellingPointsList.innerHTML = "";
 
-    item.textContent = point;
+  if (!dish.sellingPoints || dish.sellingPoints.length === 0) {
+    showEmptyMessage(sellingPointsList, "Selling points are not available yet.");
+  } else {
+    dish.sellingPoints.forEach((point) => {
+      const item = document.createElement("li");
 
-    sellingPointsList.appendChild(item);
-  });
+      item.textContent = point;
+
+      sellingPointsList.appendChild(item);
+    });
+  }
 }
 
 function showQuestion() {
@@ -241,4 +249,17 @@ function showResults() {
 
   nextQuestionButton.hidden = true;
   //restartQuizButton.hidden = false;
+}
+
+// HELPER FUNCTIONS
+
+function showEmptyMessage(container, message) {
+  const isList = container.matches("ul, ol");
+
+  const element = document.createElement(isList ? "li" : "p");
+
+  element.className = "empty-message";
+  element.textContent = message;
+
+  container.appendChild(element);
 }

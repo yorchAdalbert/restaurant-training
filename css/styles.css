@@ -70,7 +70,7 @@ html {
   text-decoration: underline;
 }
 
-/* NAVIGATION BAR */
+/* ==== NAVIGATION BAR ==== */
 
 .category-navigation {
   display: flex;
@@ -108,7 +108,7 @@ html {
   border-color: var(--color-primary);
 }
 
-/* SUBCATEGORY NAVIGATION */
+/* ==== SUBCATEGORY NAVIGATION ==== */
 
 .subcategory-navigation {
   display: flex;
@@ -139,7 +139,7 @@ html {
   border-color: var(--color-terracotta);
 }
 
-/* DISH SECTION */
+/* ==== DISH SECTION ==== */
 
 .dish-training {
   margin: 50px 0;
@@ -219,7 +219,7 @@ html {
   margin-top: 40px;
 }
 
-/* Ingedient section */
+/* ==== Ingedient section ==== */
 
 .ingredients-grid {
   display: grid;
@@ -311,7 +311,7 @@ html {
   color: #666;
 }
 
-/* Allergen Section*/
+/* ==== Allergen Section ==== */
 
 .allergens-list {
   display: flex;
@@ -329,7 +329,7 @@ html {
   font-weight: 600;
 }
 
-/* Preparation Section */
+/* ==== Preparation Section ==== */
 
 .preparation-list {
   margin: 20px 0 0;
@@ -343,7 +343,7 @@ html {
   color: #555;
 }
 
-/* Selling Points Section */
+/* ==== Selling Points Section ==== */
 
 .selling-points-list {
   margin: 20px 0 0;
@@ -356,7 +356,18 @@ html {
   color: #555;
 }
 
-/* Quiz Section */
+/* ==== MESSAGES SECTION ==== */
+
+.empty-message {
+  padding: 16px 20px;
+  background: var(--color-background);
+  border-left: 3px solid var(--color-terracotta);
+  border-radius: 6px;
+  color: var(--color-blue-gray);
+  line-height: 1.6;
+}
+
+/* ==== Quiz Section ===== */
 
 .quiz-container {
   margin-top: 20px;
@@ -426,7 +437,7 @@ html {
   font-weight: 600;
 }
 
-/* MENU PAGE */
+/* ==== MENU PAGE ==== */
 
 .menu-section {
   margin-bottom: 64px;
@@ -514,7 +525,7 @@ html {
   color: #666;
 }
 
-/* ERROR PAGE */
+/* ==== ERROR PAGE ==== */
 
 .dish-error {
   margin: 50px 0;
@@ -533,6 +544,8 @@ html {
   margin-top: 16px;
   font-weight: 600;
 }
+
+/* ==== MEDIA SECTION ==== */
 
 @media (max-width: 800px) {
   .dish-hero {
