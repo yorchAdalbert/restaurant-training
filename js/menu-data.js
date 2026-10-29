@@ -94,50 +94,93 @@ const menu = [
   },
 
   {
+    id: "toast-de-burrata",
+    name: "Toast de Burrata",
+    menu: "Brunch",
+    category: "Toasts",
+
+    image: "images/dishes/toast-de-burrata.webp",
+
+    description:
+      "Sourdough toast with burrata, ricotta, " +
+      "grilled peaches, guava and Serrano ham.",
+
+    ingredients: [
+      {
+        name: "Sourdough Bread",
+        description: "House-made sourdough batard.",
+      },
+      {
+        name: "Ricotta Cheese",
+        description: "Soft, fresh cheese.",
+      },
+      {
+        name: "Burrata",
+        description: "Fresh cheese with a creamy center.",
+      },
+      {
+        name: "Guava Paste",
+        description: "",
+      },
+      {
+        name: "Grilled Peaches",
+        description: "Served in syrup.",
+      },
+      {
+        name: "Candied Orange",
+        description: "",
+      },
+      {
+        name: "Serrano Ham",
+        description: "30 grams.",
+      },
+      {
+        name: "Basil",
+        description: "",
+      },
+    ],
+
+    allergens: [],
+    preparation: [],
+    sellingPoints: [],
+    quiz: [],
+  },
+
+  {
     id: "french-toast",
     name: "French Toast",
     menu: "Lunch & dinner",
     category: "Desserts",
     image: "images/dishes/french-toast.webp",
-    description:
-      "A temporary training module used to test multiple dishes.",
+    description: "A temporary training module used to test multiple dishes.",
 
     ingredients: [
       {
         name: "Bread",
         icon: "icons/ingredients/sourdough-batard.png",
-        description: "Temporary ingredient used for testing."
-      }
+        description: "Temporary ingredient used for testing.",
+      },
     ],
 
-    allergens: [
-      "Gluten",
-      "Egg",
-      "Dairy"
-    ],
+    allergens: ["Gluten", "Egg", "Dairy"],
 
     preparation: [
       "Prepare the bread.",
       "Cook the French toast.",
-      "Plate and finish the dish."
+      "Plate and finish the dish.",
     ],
 
     sellingPoints: [
       "Sweet breakfast option.",
-      "Soft interior with a toasted exterior."
+      "Soft interior with a toasted exterior.",
     ],
 
     quiz: [
       {
         question: "Which category does this dish belong to?",
-        options: [
-          "Breakfast",
-          "Beverage",
-          "Salad",
-          "Dinner"
-        ],
-        correctAnswer: "Breakfast"
-      }
-    ]
-  }
+        options: ["Breakfast", "Beverage", "Salad", "Dinner"],
+        correctAnswer: "Breakfast",
+      },
+    ],
+  },
 ];

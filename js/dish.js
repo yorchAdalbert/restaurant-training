@@ -98,14 +98,24 @@ function renderIngredients() {
 }
 
 function renderAllergens() {
-  dish.allergens.forEach((allergen) => {
-    const badge = document.createElement("span");
+  if (!dish.allergens || dish.allergens.length === 0) {
+    const warning = document.createElement("p");
 
-    badge.className = "allergen-badge";
-    badge.textContent = allergen;
+    warning.textContent =
+      "Allergen information pending verification. " +
+      "Consult the restaurant's official allergen guidance.";
 
-    allergensList.appendChild(badge);
-  });
+    allergensList.appendChild(warning);
+  } else {
+    dish.allergens.forEach((allergen) => {
+      const badge = document.createElement("span");
+
+      badge.className = "allergen-badge";
+      badge.textContent = allergen;
+
+      allergensList.appendChild(badge);
+    });
+  }
 }
 
 function renderPreparation() {
@@ -129,6 +139,13 @@ function renderSellingPoints() {
 }
 
 function showQuestion() {
+  if (!dish.quiz || dish.quiz.length === 0) {
+    quizContainer.textContent = "Knowledge check coming soon.";
+    quizFeedback.textContent = "";
+    nextQuestionButton.hidden = true;
+    return;
+  }
+
   const quizQuestion = dish.quiz[currentQuestionIndex];
 
   quizContainer.innerHTML = "";
@@ -183,10 +200,11 @@ function showQuestion() {
         quizFeedback.textContent = `Incorrect. The correct answer is ${quizQuestion.correctAnswer}`;
         quizFeedback.className = "quiz-feedback incorrect";
       }
+
+      nextQuestionButton.hidden = false;
     });
 
     quizContainer.appendChild(button);
-    nextQuestionButton.hidden = false;
   });
 }
 

@@ -14,9 +14,15 @@ uniqueMenus.forEach((menuName) => {
   link.textContent = menuName;
   link.href = `#${createSlug(menuName)}`;
 
-  const dishesInMenu = menu.filter((dish) => { return dish.menu === menuName });
+  categoryNavigation.appendChild(link);
 
-  const categoriesInMenu = dishesInMenu.map((dish) => { return dish.category });
+  const dishesInMenu = menu.filter((dish) => {
+    return dish.menu === menuName;
+  });
+
+  const categoriesInMenu = dishesInMenu.map((dish) => {
+    return dish.category;
+  });
   const uniqueCategoriesInMenu = [...new Set(categoriesInMenu)];
 
   const menuSection = document.createElement("section");
@@ -50,14 +56,16 @@ uniqueMenus.forEach((menuName) => {
     //const categoryTitle = document.createElement("h3");
     //categoryTitle.textContent = category;
 
-    const dishesInCategory = dishesInMenu.filter((dish) => { return dish.category === category });
+    const dishesInCategory = dishesInMenu.filter((dish) => {
+      return dish.category === category;
+    });
 
     const categoryGrid = document.createElement("div");
     categoryGrid.className = "menu-grid";
 
     dishesInCategory.forEach((dish) => {
       const dishCard = createDishCard(dish);
-      
+
       categoryGrid.appendChild(dishCard);
     });
 
@@ -65,20 +73,9 @@ uniqueMenus.forEach((menuName) => {
     categorySection.appendChild(categoryGrid);
 
     menuSection.appendChild(categorySection);
-  })
+  });
 
   menuCategories.appendChild(menuSection);
-  categoryNavigation.appendChild(link);
-
-  link.addEventListener("click", () => {
-    const links = categoryNavigation.querySelectorAll(".category-link");
-
-    links.forEach((menuLink) => {
-      menuLink.classList.remove("active");
-    })
-
-    link.classList.add("active");
-  })
 });
 
 // CUSTOM FUNCTIONS
@@ -112,3 +109,18 @@ function createDishCard(dish) {
 function createSlug(text) {
   return text.toLowerCase().replaceAll(" & ", "-").replaceAll(" ", "-");
 }
+
+function updateActiveMenu() {
+  const currentHash = window.location.hash;
+  const links = categoryNavigation.querySelectorAll(".category-link");
+
+  links.forEach((link) => {
+    const isActive = link.getAttribute("href") === currentHash;
+
+    link.classList.toggle("active", isActive);
+  });
+}
+
+window.addEventListener("hashchange", updateActiveMenu);
+
+updateActiveMenu();
