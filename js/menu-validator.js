@@ -1,3 +1,5 @@
+import { menu } from "./menu-data.js";
+
 function validateDish(dish) {
   const requiredProperties = [
     "id",

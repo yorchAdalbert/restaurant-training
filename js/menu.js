@@ -1,3 +1,6 @@
+import { menu } from "./menu-data.js";
+import "./menu-validator.js";
+
 const menuCategories = document.querySelector("#menu-categories");
 const categoryNavigation = document.querySelector("#category-navigation");
 

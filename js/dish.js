@@ -1,3 +1,6 @@
+import { menu } from "./menu-data.js";
+import "./menu-validator.js";
+
 const params = new URLSearchParams(window.location.search);
 
 const dishId = params.get("dish") || "tuna-spicy-toast";
