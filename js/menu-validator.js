@@ -36,6 +36,28 @@ function validateDish(dish) {
       );
     }
   });
+
+  const stringProperties = [
+    "id", 
+    "name", 
+    "menu", 
+    "category"
+  ];
+
+  stringProperties.forEach((property) => {
+    if (property in dish && !isValidString(dish[property])) {
+      console.warn(
+        `Invalid string for "${property}" in ${dish.id || "unknown dish"}`
+      );
+    }
+  })
+}
+
+function isValidString(value) {
+  return (
+    typeof value === "string" &&
+    value.trim().length > 0
+  );
 }
 
 function validateUniqueIds(menu) {
