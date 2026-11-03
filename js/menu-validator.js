@@ -51,6 +51,12 @@ function validateDish(dish) {
       );
     }
   })
+
+  if (Array.isArray(dish.ingredients)) {
+    dish.ingredients.forEach((ingredients) => {
+      validateIngredient(ingredients, dish.name);
+    });
+  }
 }
 
 function isValidString(value) {
@@ -72,6 +78,25 @@ function validateUniqueIds(menu) {
       ids.add(dish.id);
     }
   });
+}
+
+function validateIngredient(ingredient, dishName) {
+  if (
+    typeof ingredient !== "object" ||
+    ingredient === null ||
+    Array.isArray(ingredient)
+  ) {
+    console.warn(
+      `Invalid ingredient object in ${dishName}`
+    );
+    return;
+  }
+
+  if (!isValidString(ingredient.name)) {
+    console.warn(
+      `Invalid ingredient name in ${dishName}`
+    );
+  }
 }
 
 menu.forEach((dish) => {

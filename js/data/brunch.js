@@ -115,7 +115,7 @@ export const brunchMenu = [
         description: "Soft, fresh cheese.",
       },
       {
-        name: "Burrata",
+        name: "",
         description: "Fresh cheese with a creamy center.",
       },
       {
