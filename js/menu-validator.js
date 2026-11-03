@@ -38,6 +38,22 @@ function validateDish(dish) {
   });
 }
 
+function validateUniqueIds(menu) {
+  const ids = new Set();
+
+  menu.forEach((dish) => {
+    if (ids.has(dish.id)) {
+      console.warn(
+        `Duplicate dish ID detected: ${dish.id}`
+      );
+    } else {
+      ids.add(dish.id);
+    }
+  });
+}
+
 menu.forEach((dish) => {
   validateDish(dish);
 });
+
+validateUniqueIds(menu);
