@@ -15,9 +15,7 @@ function validateDish(dish) {
 
   requiredProperties.forEach((property) => {
     if (!(property in dish)) {
-      console.warn(
-        `Missing property "${property}" in ${dish.name || dish.id || "unknown dish"}`
-      );
+      console.warn(`Missing property "${property}" in ${dish.name || dish.id || "unknown dish"}`);
     }
   });
 
@@ -31,9 +29,7 @@ function validateDish(dish) {
 
   arrayProperties.forEach((property) => {
     if (property in dish && !Array.isArray(dish[property])) {
-      console.warn(
-        `Invalid data type for "${property}" in ${dish.name || dish.id || "unknown dish"}. Expected an array.`
-      );
+      console.warn(`Invalid data type for "${property}" in ${dish.name || dish.id || "unknown dish"}. Expected an array.`);
     }
   });
 
@@ -46,9 +42,7 @@ function validateDish(dish) {
 
   stringProperties.forEach((property) => {
     if (property in dish && !isValidString(dish[property])) {
-      console.warn(
-        `Invalid string for "${property}" in ${dish.id || "unknown dish"}`
-      );
+      console.warn(`Invalid string for "${property}" in ${dish.id || "unknown dish"}`);
     }
   })
 
@@ -60,10 +54,7 @@ function validateDish(dish) {
 }
 
 function isValidString(value) {
-  return (
-    typeof value === "string" &&
-    value.trim().length > 0
-  );
+  return (typeof value === "string" && value.trim().length > 0);
 }
 
 function validateUniqueIds(menu) {
@@ -71,9 +62,7 @@ function validateUniqueIds(menu) {
 
   menu.forEach((dish) => {
     if (ids.has(dish.id)) {
-      console.warn(
-        `Duplicate dish ID detected: ${dish.id}`
-      );
+      console.warn(`Duplicate dish ID detected: ${dish.id}`);
     } else {
       ids.add(dish.id);
     }
@@ -86,16 +75,16 @@ function validateIngredient(ingredient, dishName) {
     ingredient === null ||
     Array.isArray(ingredient)
   ) {
-    console.warn(
-      `Invalid ingredient object in ${dishName}`
-    );
+    console.warn(`Invalid ingredient object in ${dishName}`);
     return;
   }
 
   if (!isValidString(ingredient.name)) {
-    console.warn(
-      `Invalid ingredient name in ${dishName}`
-    );
+    console.warn(`Invalid ingredient name in ${dishName}`);
+  }
+
+  if ("description" in ingredient && typeof ingredient.description !== "string") {
+    console.warn(`Invalid ingredient description in ${dishName}`);
   }
 }
 
